@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Divisores de un Número</title>
+    <link rel="stylesheet" href="/CSS EJERCICIOS/hola.css">
+</head>
+<body>
+    <h1>Buscar Divisores de un Número</h1>
+
+    <label for="numero">Introduce un número:</label>
+    <input type="number" id="numero"><br>
+
+    <button onclick="buscarDivisores()">Mostrar Divisores</button>
+
+    <div id="resultado"></div>
+
+    <!-- Botón Volver al menú principal -->
+<a href="/HTML" class="boton-volver">← Volver al menú principal</a>
+
+    <script>
+        function buscarDivisores() {
+            const numero = parseInt(document.getElementById("numero").value);
+            const resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = "";
+
+            if (isNaN(numero) || numero <= 0) {
+                resultadoDiv.innerHTML = "<p>Por favor, introduce un número entero positivo.</p>";
+                return;
+            }
+
+            let divisor = 1;
+            let divisoresHTML = "<ul>";
+
+            while (divisor <= numero) {
+                if (numero % divisor === 0) {
+                    divisoresHTML += `<li>${divisor}</li>`;
+                }
+                divisor++;
+            }
+
+            divisoresHTML += "</ul>";
+            resultadoDiv.innerHTML = `<p>Los divisores de <strong>${numero}</strong> son:</p>${divisoresHTML}`;
+        }
+    </script>
+</body>
+</html>

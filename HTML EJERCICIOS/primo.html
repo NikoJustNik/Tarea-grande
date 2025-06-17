@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Número Primo</title>
+  <link rel="stylesheet" href="/CSS EJERCICIOS/hola.css">
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1>¿Es un Número Primo?</h1>
+
+      <label for="numero">Introduce un número:</label>
+      <input type="number" id="numero"><br>
+
+      <button onclick="verificarPrimo()">Verificar</button>
+
+      <div class="resultado" id="resultado"></div>
+    </div>
+  </div>
+
+  <!-- Botón Volver al menú principal -->
+<a href="/HTML" class="boton-volver">← Volver al menú principal</a>
+
+  <script>
+    function verificarPrimo() {
+      const numero = parseInt(document.getElementById("numero").value);
+      const resultadoDiv = document.getElementById("resultado");
+      resultadoDiv.innerHTML = "";
+
+      if (isNaN(numero) || numero < 2) {
+        resultadoDiv.innerHTML = "<p>Introduce un número mayor o igual a 2.</p>";
+        return;
+      }
+
+      let esPrimo = true;
+      let divisor = 2;
+
+      while (divisor <= Math.sqrt(numero)) {
+        if (numero % divisor === 0) {
+          esPrimo = false;
+          break; // se detiene el while al encontrar el primer divisor
+        }
+        divisor++;
+      }
+
+      resultadoDiv.innerHTML = `<p>El número <strong>${numero}</strong> ${esPrimo ? "es primo ✅" : "no es primo ❌"}.</p>`;
+    }
+  </script>
+</body>
+</html>

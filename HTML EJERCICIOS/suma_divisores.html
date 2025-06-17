@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sumar Divisores</title>
+    <link rel="stylesheet" href="/CSS EJERCICIOS/hola.css">
+</head>
+<body>
+    <h1>Divisores y Suma de Divisores</h1>
+
+    <label for="numero">Introduce un número:</label>
+    <input type="number" id="numero"><br>
+
+    <button onclick="sumarDivisores()">Mostrar y Sumar Divisores</button>
+
+    <div id="resultado"></div>
+
+    <!-- Botón Volver al menú principal -->
+<a href="/HTML" class="boton-volver">← Volver al menú principal</a>
+
+    <script>
+        function sumarDivisores() {
+            const numero = parseInt(document.getElementById("numero").value);
+            const resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = "";
+
+            if (isNaN(numero) || numero <= 0) {
+                resultadoDiv.innerHTML = "<p>Por favor, introduce un número entero positivo.</p>";
+                return;
+            }
+
+            let divisor = 1;
+            let suma = 0;
+            let listaDivisores = "<ul>";
+
+            while (divisor <= numero) {
+                if (numero % divisor === 0) {
+                    listaDivisores += `<li>${divisor}</li>`;
+                    suma += divisor;
+                }
+                divisor++;
+            }
+
+            listaDivisores += "</ul>";
+
+            resultadoDiv.innerHTML = `
+                <p>Los divisores de <strong>${numero}</strong> son:</p>
+                ${listaDivisores}
+                <p>La suma de los divisores es: <strong>${suma}</strong></p>
+            `;
+        }
+    </script>
+</body>
+</html>

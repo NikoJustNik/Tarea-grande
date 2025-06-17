@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mensaje N veces</title>
+  <link rel="stylesheet" type="text/css" href="/CSS EJERCICIOS/hola.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔁 Repetir mensaje N veces</h1>
+    <form id="mensajeForm">
+      <label for="mensaje">Escribe tu mensaje:</label>
+      <input type="text" id="mensaje" required>
+
+      <label for="cantidad">¿Cuántas veces quieres repetirlo?</label>
+      <input type="number" id="cantidad" min="1" required>
+
+      <button type="submit">Mostrar</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <!-- Botón Volver al menú principal -->
+<a href="/HTML" class="boton-volver">← Volver al menú principal</a>
+
+  <script>
+    document.getElementById('mensajeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const mensaje = document.getElementById('mensaje').value;
+      const cantidad = parseInt(document.getElementById('cantidad').value);
+      let resultado = '';
+      let i = 0;
+
+      while (i < cantidad) {
+        resultado += `<p>${i + 1}. ${mensaje}</p>`;
+        i++;
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+    });
+  </script>
+</body>
+</html>

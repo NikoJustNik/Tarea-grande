@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificar Número Perfecto</title>
+    <link rel="stylesheet" href="/CSS EJERCICIOS/Cell.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>¿Es un Número Perfecto?</h1>
+
+            <label for="numero">Introduce un número:</label>
+            <input type="number" id="numero"><br>
+
+            <button onclick="verificarPerfecto()">Verificar</button>
+
+            <div class="resultado" id="resultado"></div>
+        </div>
+    </div>
+
+    <div class="imagen-esquina">
+        <img src="/Imagenes/Cell.jpeg" alt="Decoración">
+    </div>
+    
+<!-- Botón Volver al menú principal -->
+<a href="/HTML" class="boton-volver">← Volver al menú principal</a>
+
+    <script>
+        function verificarPerfecto() {
+            const numero = parseInt(document.getElementById("numero").value);
+            const resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = "";
+
+            if (isNaN(numero) || numero <= 0) {
+                resultadoDiv.innerHTML = "<p>Por favor, introduce un número entero positivo.</p>";
+                return;
+            }
+
+            let divisor = 1;
+            let suma = 0;
+            let lista = "<ul>";
+
+            while (divisor < numero) {
+                if (numero % divisor === 0) {
+                    suma += divisor;
+                    lista += `<li>${divisor}</li>`;
+                }
+                divisor++;
+            }
+
+            lista += "</ul>";
+
+            resultadoDiv.innerHTML = `
+                <p>Divisores propios de <strong>${numero}</strong>:</p>
+                ${lista}
+                <p>Suma de divisores: <strong>${suma}</strong></p>
+                <p>Resultado: <strong>${suma === numero ? "¡Es un número perfecto!" : "No es un número perfecto."}</strong></p>
+            `;
+        }
+    </script>
+</body>
+</html>

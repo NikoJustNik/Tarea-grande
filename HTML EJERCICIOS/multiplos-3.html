@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiplos de 3 hasta N</title>
+  <link rel="stylesheet" href="/CSS EJERCICIOS/hola.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔂 Múltiplos de 3 hasta N</h1>
+    <form id="formMultiplos">
+      <label for="limite">Ingresa un número:</label>
+      <input type="number" id="limite" min="1" required>
+
+      <button type="submit">Mostrar Múltiplos</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+<!-- Botón Volver al menú principal -->
+<a href="/HTML" class="boton-volver">← Volver al menú principal</a>
+
+  <script>
+    document.getElementById('formMultiplos').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const limite = parseInt(document.getElementById('limite').value);
+      let resultado = '';
+      let i = 1;
+
+      while (i <= limite) {
+        if (i % 3 === 0) {
+          resultado += `<p>${i} es múltiplo de 3</p>`;
+        }
+        i++;
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+    });
+  </script>
+</body>
+</html>

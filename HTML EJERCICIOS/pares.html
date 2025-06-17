@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Números Pares hasta N</title>
+  <link rel="stylesheet" href="/CSS EJERCICIOS/hola.css">
+</head>
+<body>
+  <div class="container">
+    <h1>➗ Mostrar solo los números pares</h1>
+    <form id="formPares">
+      <label for="limite">Ingresa un número:</label>
+      <input type="number" id="limite" min="1" required>
+
+      <button type="submit">Mostrar Pares</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <!-- Botón Volver al menú principal -->
+<a href="/HTML" class="boton-volver">← Volver al menú principal</a>
+
+  <script>
+    document.getElementById('formPares').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const limite = parseInt(document.getElementById('limite').value);
+      let resultado = '';
+      let i = 1;
+
+      while (i <= limite) {
+        if (i % 2 === 0) {
+          resultado += `<p>${i} es par</p>`;
+        }
+        i++;
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+    });
+  </script>
+</body>
+</html>

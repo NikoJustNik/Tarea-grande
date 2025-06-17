@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Multiplicar con Rango</title>
+    <link rel="stylesheet" href="/CSS EJERCICIOS/hola.css">
+</head>
+<body>
+    <h1>Tabla de Multiplicar con Rango</h1>
+
+    <label for="numero">Número base:</label>
+    <input type="number" id="numero"><br>
+
+    <label for="desde">Desde:</label>
+    <input type="number" id="desde"><br>
+
+    <label for="hasta">Hasta:</label>
+    <input type="number" id="hasta"><br>
+
+    <button onclick="generarTabla()">Generar Tabla</button>
+
+    <div id="resultado"></div>
+
+    <!-- Botón Volver al menú principal -->
+<a href="/HTML" class="boton-volver">← Volver al menú principal</a>
+
+    <script>
+        function generarTabla() {
+            const numero = parseInt(document.getElementById("numero").value);
+            let desde = parseInt(document.getElementById("desde").value);
+            const hasta = parseInt(document.getElementById("hasta").value);
+            const resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = ""; // Limpiar resultados anteriores
+
+            if (isNaN(numero) || isNaN(desde) || isNaN(hasta)) {
+                resultadoDiv.innerHTML = "<p>Por favor, completa todos los campos con números válidos.</p>";
+                return;
+            }
+
+            if (desde > hasta) {
+                resultadoDiv.innerHTML = "<p>El valor 'Desde' debe ser menor o igual que 'Hasta'.</p>";
+                return;
+            }
+
+            let tablaHTML = "<ul>";
+            while (desde <= hasta) {
+                const resultado = numero * desde;
+                tablaHTML += `<li>${numero} × ${desde} = ${resultado}</li>`;
+                desde++;
+            }
+            tablaHTML += "</ul>";
+            resultadoDiv.innerHTML = tablaHTML;
+        }
+    </script>
+</body>
+</html>

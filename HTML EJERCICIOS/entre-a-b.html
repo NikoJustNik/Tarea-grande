@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Rango de Números</title>
+    <link rel="stylesheet" href="/CSS EJERCICIOS/hola.css">
+</head>
+<body>
+    <h1>Mostrar Rango de Números</h1>
+
+    <label for="inicio">Desde (A):</label>
+    <input type="number" id="inicio"><br>
+
+    <label for="fin">Hasta (B):</label>
+    <input type="number" id="fin"><br>
+
+    <button onclick="mostrarRango()">Mostrar Rango</button>
+
+    <div id="resultado"></div>
+
+    <!-- Botón Volver al menú principal -->
+<a href="/HTML" class="boton-volver">← Volver al menú principal</a>
+
+    <script>
+        function mostrarRango() {
+            let a = parseInt(document.getElementById("inicio").value);
+            let b = parseInt(document.getElementById("fin").value);
+            const resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = "";
+
+            if (isNaN(a) || isNaN(b)) {
+                resultadoDiv.innerHTML = "<p>Por favor, ingresa ambos números correctamente.</p>";
+                return;
+            }
+
+            let rangoHTML = "<ul>";
+            if (a <= b) {
+                while (a <= b) {
+                    rangoHTML += `<li>${a}</li>`;
+                    a++;
+                }
+            } else {
+                while (a >= b) {
+                    rangoHTML += `<li>${a}</li>`;
+                    a--;
+                }
+            }
+            rangoHTML += "</ul>";
+            resultadoDiv.innerHTML = rangoHTML;
+        }
+    </script>
+</body>
+</html>
