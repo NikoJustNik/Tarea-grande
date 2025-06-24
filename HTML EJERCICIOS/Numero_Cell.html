@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/CSS EJERCICIOS/Cell.css">
+  <title>Verificar numero perfecto</title>
+  <script src="/JAVASCRIPT/Arreglo_9.js" defer></script>
+</head>
+<body>
+  <h1>Verificar si cada numero es perfecto</h1>
+  <input type="text" id="inputNumeros" placeholder="Ej: 6;10;28">
+  <button onclick="ejecutarNumeroCell()">Ejecutar</button>
+  <div id="resultado17"></div>
+</body>
+
+    <div class="imagen-esquina">
+        <img src="/Imagenes/Cell.jpeg" alt="Decoración">
+    </div>
+    
+<!-- Botón Volver al menú principal -->
+<a href="/HTML" class="boton-volver">← Volver al menú principal</a>
+
+<audio id="audioLoop" src="/audio/Cell_tema.mp3" autoplay loop controls></audio>
+
+<script>
+  const audio = document.getElementById("audioLoop");
+
+  // Si el usuario intenta pausar, se repite
+  audio.addEventListener("pause", () => {
+    audio.play();
+  });
+
+  // si autoplay no sirve, forzar
+  window.addEventListener("load", () => {
+    audio.play().catch(() => {
+      // si sigue bloqueado, mostrar permisos al usuario
+      console.warn("Autoplay fue bloqueado por el navegador.");
+    });
+  });
+</script>
+
+
+</html>
